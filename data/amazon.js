@@ -1,4 +1,5 @@
-import { cart} from "./cart.js";
+import { cart } from "./cart.js";
+import { products } from "./products.js";
 document.addEventListener("DOMContentLoaded", () => {
   //displaying the products
   let productsHTML = "";
