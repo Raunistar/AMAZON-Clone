@@ -1,7 +1,8 @@
 import { cart, addToCart } from "./cart.js";
 import { products } from "./products.js";
+
 document.addEventListener("DOMContentLoaded", () => {
-  //displaying the products
+  // displaying the products
   let productsHTML = "";
   products.forEach((product) => {
     productsHTML += `
@@ -53,19 +54,27 @@ document.addEventListener("DOMContentLoaded", () => {
             Added
           </div>
 
-          <button class="add-to-cart-button button-primary js-add-to-cart" data-pdt-id="${
+          <button class="add-to-cart-button button-primary js-add-to-cart" data-product-id="${
             product.id
           }">Add to Cart</button>
         </div>
 `;
   });
+
   document.querySelector(".js-pdt-grid").innerHTML = productsHTML;
 
-  //Add to cart btn functionality
+  // set initial cart quantity on page load
+  let initialCartQuantity = 0;
+  cart.forEach((cartItem) => {
+    initialCartQuantity += cartItem.quantity;
+  });
+  document.querySelector(".js-cart-quantity").innerHTML = initialCartQuantity;
+
+  // Add to cart button functionality
   document.querySelectorAll(".js-add-to-cart").forEach((button) => {
     button.addEventListener("click", () => {
-      const productID = button.dataset.productID;
-      addToCart(productID);
+      const productId = button.dataset.productId;
+      addToCart(productId);
       let cartQuantity = 0;
       cart.forEach((cartItem) => {
         cartQuantity += cartItem.quantity;
