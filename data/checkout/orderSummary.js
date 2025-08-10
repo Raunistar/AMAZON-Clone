@@ -3,9 +3,7 @@ import { products } from "../products.js";
 import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
 import { deliveryOptions, getDeliveryOption } from "../deliveryOptions.js";
 import { renderPaymentSummary } from "../checkout/paymentSummary.js";
-const today = dayjs();
-const deliveryDate = today.add(7, "days");
-deliveryDate.format("dddd, MMMM D");
+
 export function renderOrderSummary() {
   let cartSummaryHtml = "";
 
