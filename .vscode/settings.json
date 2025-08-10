@@ -6,7 +6,7 @@
   "editor.tabSize": 2,
   "editor.cursorBlinking": "smooth",
   "editor.cursorSmoothCaretAnimation": "on",
-  "editor.cursorWidth": 3,
+  "editor.cursorWidth": 0,
   "editor.wordWrap": "on",
   "editor.renderWhitespace": "all",
   "editor.autoClosingOvertype": "auto",
