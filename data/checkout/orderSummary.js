@@ -3,7 +3,6 @@ import { products } from "../products.js";
 import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
 import { deliveryOptions, getDeliveryOption } from "../deliveryOptions.js";
 import { renderPaymentSummary } from "../checkout/paymentSummary.js";
- 
 export function renderOrderSummary() {
   let cartSummaryHtml = "";
 
@@ -17,7 +16,9 @@ export function renderOrderSummary() {
     const dateString = deliveryDate.format("dddd, MMMM D");
 
     cartSummaryHtml += `
-    <div class="cart-item-container js-cart-item-container-${matchingPdt.id}">
+    <div class="cart-item-container js-cart-item-container js-cart-item-container-${
+      matchingPdt.id
+    }">
       <div class="delivery-date">
         Delivery date:${dateString}
       </div>
@@ -30,7 +31,7 @@ export function renderOrderSummary() {
           <div class="product-price">$${(matchingPdt.priceCents / 100).toFixed(
             2
           )}</div>
-          <div class="product-quantity">
+          <div class="product-quantity js-product-quantity-${matchingPdt.id}">
             <span>Quantity: <span class="quantity-label">${
               cartItem.quantity
             }</span></span>
@@ -38,7 +39,9 @@ export function renderOrderSummary() {
                   data-product-id="${matchingPdt.id}">
               Update
             </span>
-            <span class="delete-quantity-link link-primary js-delete-link"
+            <span class="delete-quantity-link link-primary js-delete-link js-delete-link-${
+              matchingPdt.id
+            }"
                   data-product-id="${matchingPdt.id}">
               Delete
             </span>
