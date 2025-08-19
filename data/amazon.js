@@ -1,11 +1,13 @@
 import { cart, addToCart } from "./cart.js";
-import { products } from "./products.js";
+import { products, loadProducts } from "./products.js";
 
 document.addEventListener("DOMContentLoaded", () => {
+  loadProducts(renderProductsGrid);
   // displaying the products
-  let productsHTML = "";
-  products.forEach((product) => {
-    productsHTML += `
+  function renderProductsGrid() {
+    let productsHTML = "";
+    products.forEach((product) => {
+      productsHTML += `
         <div class="product-container">
           <div class="product-image-container">
             <img
@@ -60,27 +62,28 @@ document.addEventListener("DOMContentLoaded", () => {
           }">Add to Cart</button>
         </div>
 `;
-  });
-
-  document.querySelector(".js-pdt-grid").innerHTML = productsHTML;
-
-  // set initial cart quantity on page load
-  let initialCartQuantity = 0;
-  cart.forEach((cartItem) => {
-    initialCartQuantity += cartItem.quantity;
-  });
-  document.querySelector(".js-cart-quantity").innerHTML = initialCartQuantity;
-
-  // Add to cart button functionality
-  document.querySelectorAll(".js-add-to-cart").forEach((button) => {
-    button.addEventListener("click", () => {
-      const productId = button.dataset.productId;
-      addToCart(productId);
-      let cartQuantity = 0;
-      cart.forEach((cartItem) => {
-        cartQuantity += cartItem.quantity;
-      });
-      document.querySelector(".js-cart-quantity").innerHTML = cartQuantity;
     });
-  });
+
+    document.querySelector(".js-pdt-grid").innerHTML = productsHTML;
+
+    // set initial cart quantity on page load
+    let initialCartQuantity = 0;
+    cart.forEach((cartItem) => {
+      initialCartQuantity += cartItem.quantity;
+    });
+    document.querySelector(".js-cart-quantity").innerHTML = initialCartQuantity;
+
+    // Add to cart button functionality
+    document.querySelectorAll(".js-add-to-cart").forEach((button) => {
+      button.addEventListener("click", () => {
+        const productId = button.dataset.productId;
+        addToCart(productId);
+        let cartQuantity = 0;
+        cart.forEach((cartItem) => {
+          cartQuantity += cartItem.quantity;
+        });
+        document.querySelector(".js-cart-quantity").innerHTML = cartQuantity;
+      });
+    });
+  }
 });
