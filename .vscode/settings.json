@@ -30,7 +30,7 @@
   "editor.smoothScrolling": true,
   "editor.accessibilitySupport": "off",
   "editor.minimap.enabled": true,
-  "editor.minimap.size": "fit",
+  "editor.minimap.size": "proportional",
   "editor.minimap.showSlider": "always",
   "editor.minimap.renderCharacters": false,
   "editor.scrollBeyondLastLine": false,
